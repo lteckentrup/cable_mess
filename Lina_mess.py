@@ -23,7 +23,7 @@ An_x = np.zeros(len(Tleaf))
 gsc_x = np.zeros(len(Tleaf))
 
 ## Calculate An and gsc for varying temperature
-def photo(Cs_val, par_val, dleaf_val):
+def photosynthesis_variation(Cs_val, par_val, dleaf_val):
     for i in range(len(Tleaf_K)):
         (An, gsc) = F.photosynthesis(p, Cs=Cs_val, Tleaf=Tleaf_K[i],
                     Par=par_val, vpd=dleaf_val)
@@ -70,7 +70,7 @@ ax8 = fig.add_subplot(248)
 Cs = [0,200,400,600,800]
 
 for i in Cs:
-    photo(i,1800,1.5)
+    photosynthesis_variation(i,1800,1.5)
     ax1.plot(Tleaf, An_x, label="Cs="+str(i))
     ax5.plot(Tleaf, gsc_x, label="Cs="+str(i))
 
@@ -78,7 +78,7 @@ for i in Cs:
 par = [0,900,1800,2700,3600]
 
 for i in par:
-    photo(400,i,1.5)
+    photosynthesis_variation(400,i,1.5)
     ax2.plot(Tleaf, An_x, label="par="+str(i))
     ax6.plot(Tleaf, gsc_x, label="par="+str(i))
 
@@ -86,7 +86,7 @@ for i in par:
 vpd = [0,0.75,1.5,2.25,3]
 
 for i in vpd:
-    photo(400,1800,i)
+    photosynthesis_variation(400,1800,i)
     ax3.plot(Tleaf, An_x, label="vpd="+str(i))
     ax7.plot(Tleaf, gsc_x, label="vpd="+str(i))
 
@@ -95,7 +95,7 @@ Vcmax = [0, 30, 60, 120]
 
 for i in Vcmax:
     p.Vcmax25 = i
-    photo(400,1800,1.5)
+    photosynthesis_variation(400,1800,1.5)
     ax4.plot(Tleaf, An_x, label="Vcmax="+str(i))
     ax8.plot(Tleaf, gsc_x, label="Vcmax="+str(i))
 
