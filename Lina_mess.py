@@ -91,7 +91,7 @@ for i in vpd:
     ax7.plot(Tleaf, gsc_x, label="vpd="+str(i))
 
 ## vary Vcmax-value
-Vcmax = [0, 30, 60, 120]
+Vcmax = [0, 30, 60, 90, 120]
 
 for i in Vcmax:
     p.Vcmax25 = i
